@@ -78,21 +78,13 @@ net.compile(loss=criterion, optimizer=optimizer, metrics=['acc'])
  
 modName = '{}-ba{}-lr{}-{}'.format(args.model, args.ba, args.lr, args.augType)
 logDir = './logs/{}'.format(modName)
-# checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=logDir+'/tracc_{acc:.4f}.h5',  
-#                             verbose=0, 
-#                             save_weights_only=False,
-#                             save_best_only=False,
-#                             )
 
-# tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logDir)
 tf_logger_train = tf.summary.create_file_writer(logDir + "/train")
 tf_logger_train.set_as_default()
 tf_logger_test = tf.summary.create_file_writer(logDir + "/test")
 tf_logger_test.set_as_default()
 
 
-
-#%%
 best_model = None
 for epoch in range(args.maxEpoch):
     history = net.fit(trainSet, epochs=1, steps_per_epoch=trainSet.__len__(), 
