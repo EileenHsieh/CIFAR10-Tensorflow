@@ -8,7 +8,7 @@ Created on Tue May 19 22:52:57 2020
 
 
 import os
-WORKDIR = '/homes/eileen/CIFAR10/tfscripts'
+WORKDIR = './scripts'
 os.chdir(WORKDIR)
 os.environ['CUDA_VISIBLE_DEVICE'] = "1"
 
